@@ -1,0 +1,21 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Build and push to Docker Hub
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@2.13
+        with:
+          name: passfort/slate-builder-action
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}

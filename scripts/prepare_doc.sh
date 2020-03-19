@@ -13,7 +13,13 @@ if [ ! -z "$TEMPLATE_REPO" ]; then
     cd $GITHUB_WORKSPACE
 fi
 
-cat /usr/src/index.html.md > $DOC_BASE_FOLDER/index.html.md.tmp
+# If the Doc repo already has an index.html.md header/template file, use
+# it instead of the template
+if [ -f $DOC_BASE_FOLDER/index.html.md ]; then
+    mv $DOC_BASE_FOLDER/index.html.md > $DOC_BASE_FOLDER/index.html.md.tmp
+else
+    cat /usr/src/index.html.md > $DOC_BASE_FOLDER/index.html.md.tmp
+fi
 
 # Grab all .md files and build them
 # Exception: REAMDE file
