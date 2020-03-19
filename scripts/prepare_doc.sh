@@ -16,7 +16,7 @@ fi
 # If the Doc repo already has an index.html.md header/template file, use
 # it instead of the template
 if [ -f $DOC_BASE_FOLDER/index.html.md ]; then
-    mv $DOC_BASE_FOLDER/index.html.md > $DOC_BASE_FOLDER/index.html.md.tmp
+    mv $DOC_BASE_FOLDER/index.html.md $DOC_BASE_FOLDER/index.html.md.tmp
 else
     cat /usr/src/index.html.md > $DOC_BASE_FOLDER/index.html.md.tmp
 fi
