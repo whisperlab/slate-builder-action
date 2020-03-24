@@ -1,5 +1,5 @@
 # Slate Documenation Builder Action
-GitHub action to build repositories Markdown files using the [slate framework](https://github.com/lord/slate)
+GitHub action to build repositories Markdown files using the [slate framework](https://github.com/slatedocs/slate)
 
 **Table of Contents**
 
@@ -15,13 +15,13 @@ GitHub action to build repositories Markdown files using the [slate framework](h
 The docker image can be used to locally build your markdown files. For this you need, first of all, to build the docker image:
 
 ```bash
-docker build -t decathlon/slate-builder .
+docker build -t whisperlab/slate-builder .
 ```
 
 Once built run the container using the following command:
 
 ```bash
-docker run -it --rm -v <md files folder>:/usr/src/doc decathlon/slate-builder
+docker run -it --rm -v <md files folder>:/usr/src/doc whisperlab/slate-builder
 ```
 
 The slate build result will be stored into the build subdir of `<md files folder>`.
@@ -41,7 +41,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Build documentation
-      uses: docker://decathlon/slate-builder-action:2.0.0
+      uses: docker://whisperlab/slate-builder-action:2.0.0
       env:
         DOC_BASE_FOLDER = "."
 ```
@@ -60,11 +60,11 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Build documentation
-      uses: docker://decathlon/slate-builder-action:2.0.0
+      uses: docker://whisperlab/slate-builder-action:2.0.0
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         DOC_BASE_FOLDER = "."
-        TEMPLATE_REPO = "decathlon/custom-slate"
+        TEMPLATE_REPO = "whisperlab/custom-slate"
 ```
 
 The `GITHUB_TOKEN` secrets variable contains the [Private Access Token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line). This secret is mandatory if you want to access to a private repository but you can leave it empty if the template you want to use is opensource.
@@ -82,7 +82,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Build documentation
-      uses: docker://decathlon/slate-builder-action:2.0.0
+      uses: docker://whisperlab/slate-builder-action:2.0.0
       env:
         DOC_BASE_FOLDER = "."
         ZIP_BUILD = "false"
@@ -111,7 +111,7 @@ jobs:
       with:
         args: .*\\.md$
     - name: Build documentation
-      uses: docker://decathlon/slate-builder-action:2.0.0
+      uses: docker://whisperlab/slate-builder-action:2.0.0
       env:
         DOC_BASE_FOLDER: .
         ZIP_BUILD: false
