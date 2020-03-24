@@ -1,0 +1,37 @@
+on:
+  push:
+    branches:
+      - master
+
+name: Docker Hub + GitHub Pages
+
+jobs:
+  build-and-push-to-docker-hub:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@2.13
+        with:
+          name: whisperlab/slate-builder-action
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+  deploy-docs-to-github-pages:
+    needs: build-and-push-to-docker-hub
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Build documentation
+      uses: ./
+      env:
+        DOC_BASE_FOLDER: .
+        ZIP_BUILD: false
+    - name: Deploy to GitHub Pages
+      uses: maxheld83/ghpages@v0.3.0
+      env:
+        GH_PAT: ${{ secrets.GITHUB_TOKEN }}
+        BUILD_DIR: test-documentation/build/
