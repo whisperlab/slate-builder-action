@@ -1,7 +1,6 @@
 name: Slate documentation builder
 author: Whisperlab <dev@whisperlab.com>
-description: This Github action <strong>builds repositories Markdown files</strong> using slate framework.
-The slate build result will be stored into the build subdirectory of <md files folder>.
+description: This Github action <strong>builds repositories Markdown files</strong> using slate framework. The slate build result will be stored into the build subdirectory of <md files folder>.
 runs:
   using: 'docker'
   image: 'docker://whisperlab/slate-builder-action:2.0.0'
