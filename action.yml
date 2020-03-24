@@ -3,7 +3,7 @@ author: Whisperlab <dev@whisperlab.com>
 description: This Github action <strong>builds repositories Markdown files</strong> using slate framework. The slate build result will be stored into the build subdirectory of <md files folder>.
 runs:
   using: 'docker'
-  image: 'docker://whisperlab/slate-builder-action:3.0.0'
+  image: 'docker://whisperlab/slate-builder-action:3.0.1'
 branding:
   icon: tag
   color: blue

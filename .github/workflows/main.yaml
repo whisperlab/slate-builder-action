@@ -19,7 +19,7 @@ jobs:
           name: whisperlab/slate-builder-action
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-          tags: "latest,3.0.0"
+          tags: "latest,3.0.1"
 
   deploy-docs-to-github-pages:
     needs: build-and-push-to-docker-hub
