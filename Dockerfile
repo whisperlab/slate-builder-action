@@ -1,5 +1,5 @@
 FROM ruby:2.7-alpine
-LABEL maintainer="dev@passfort.com"
+LABEL maintainer="dev@whisperlab.com"
 LABEL "com.github.actions.name"="Slate Documentation builder"
 LABEL "com.github.actions.description"="Build repository md files using the slate framework"
 LABEL "com.github.actions.icon"="book-open"
